@@ -123,6 +123,16 @@ namespace Simple_Calculator
         {
             string resultString = inputs.ToString();
 
+            if(resultString.StartsWith("+") || resultString.StartsWith("-") || resultString.StartsWith("*") || resultString.StartsWith("/"))
+            {
+                resultString = resultString.Substring(1);
+            }
+            if(resultString.EndsWith("+") || resultString.EndsWith("-") || resultString.EndsWith("*") || resultString.EndsWith("/"))
+            {
+                resultString = resultString.Substring(0, resultString.Length-1);
+            }
+
+            textInput.Text = resultString;
             CalculatorProcessor calculatorProcessor = new CalculatorProcessor();
             textResult.Text = calculatorProcessor.EvaluateExpression(resultString);
         }
